@@ -14,6 +14,7 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      selectedDish: null,
       dishes: DISHES,
       comments: COMMENTS,
       promotions: PROMOTIONS,
@@ -47,7 +48,14 @@ class Main extends Component {
             component={() => (
               <Menu
                 dishes={this.state.dishes}
-                selectedDish={this.state.selectedDish}
+                comments={this.state.comments.filter((comment) => {
+                  return comment.dishId === this.state.selectedDish;
+                })}
+                selectedDish={
+                  this.state.dishes.filter((dish) => {
+                    return dish.id === this.state.selectedDish;
+                  })[0]
+                }
                 onClick={(dishId) => this.onDishSelect(dishId)}
               />
             )}

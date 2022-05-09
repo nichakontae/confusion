@@ -7,6 +7,7 @@ import {
   CardBody,
   CardTitle,
 } from "reactstrap";
+import DishDetail from "./DishsdetailComponent";
 
 function RenderMenuItem({ dish, onClick }) {
   return (
@@ -19,21 +20,25 @@ function RenderMenuItem({ dish, onClick }) {
   );
 }
 
-function renderDish(dish) {
-  if (dish != null)
-    return (
-      <Card>
-        <CardImg top src={dish.image} alt={dish.name} />
-        <CardBody>
-          <CardTitle>{dish.name}</CardTitle>
-          <CardText>{dish.description}</CardText>
-        </CardBody>
-      </Card>
-    );
-  else return <div></div>;
-}
+// function renderDish(dish) {
+//   if (dish != null)
+//     return (
+//       <Card>
+//         <CardImg top src={dish.image} alt={dish.name} />
+//         <CardBody>
+//           <CardTitle>{dish.name}</CardTitle>
+//           <CardText>{dish.description}</CardText>
+//         </CardBody>
+//       </Card>
+//     );
+//   else return <div></div>;
+// }
 
 const Menu = (props) => {
+  // const [selectedDish, setSelectedDish] = useState(null);
+  // const onDishSelect = (dishId) => {
+  //   setSelectedDish(dishId);
+  // };
   const menu = props.dishes.map((dish) => {
     return (
       <div className="col-12 col-md-5 m-1" key={dish.id}>
@@ -45,11 +50,12 @@ const Menu = (props) => {
   return (
     <div className="container">
       <div className="row">{menu}</div>
-      <div className="row">
-        <div className="col-12 col-md-5 m-1">
-          {renderDish(props.dishes[props.selectedDish])}
-        </div>
-      </div>
+      {/* <div className="row">
+        <div className="col-12 col-md-5 m-1"> */}
+      {/* {renderDish(props.dishes[props.selectedDish])} */}
+      <DishDetail dish={props.selectedDish} comment={props.comments} />
+      {/* </div> */}
+      {/* </div> */}
     </div>
   );
 };
