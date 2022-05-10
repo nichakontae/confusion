@@ -31,7 +31,7 @@ class Dishdetail extends Component {
     else return <div></div>;
   }
   renderComments(com) {
-    if (com != null) {
+    if (com != null && com.length > 0) {
       return (
         <div className="col-12 col-md-5 mx-1 my-1">
           <h4>Comments</h4>
